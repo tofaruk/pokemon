@@ -1,15 +1,15 @@
 # Pokémon 20 — Next.js + TypeScript
 
-A tiny, responsive web app that lists the **first 20 Pokémon** (sorted by ID) with their **name, image, type(s), height (m), and weight (kg)**. Built with **Next.js (App Router) + TypeScript** and tested with **React Testing Library + Jest DOM**.
+A tiny, responsive web app that lists the **first 20 Pokémon** (sorted by ID) with their **name, image, type(s), height (m), and weight (kg)**. Built with **Next.js (App Router) + TypeScript** and tested with **Jest DOM**.
 
-![Full page screenshot](docs/screenshot-full.png)
+![Full page screenshot](docs/screenshot-full.jpg)
 
 ---
 
 ## Prerequisites
 
 - **Node.js 20+** (recommended LTS)
-- **npm 10+** (or **pnpm**/**yarn** if you prefer)
+- **npm 10+**
 
 Check versions:
 ```bash
@@ -27,7 +27,7 @@ npm -v
 git clone https://github.com/tofaruk/pokemon.git pokemon
 cd pokemon
 
-# install deps
+# install dependencies
 npm install
 ```
 
