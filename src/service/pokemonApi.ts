@@ -3,7 +3,8 @@ import {
     PokemonItemDTO,
     PokemonListItem,
     PokemonListResponse
-} from "@/app/lib/types";
+} from "@/lib/types";
+import {capitalize, pickPokemonImage, toKg, toMeters} from "@/lib/helper";
 
 const BASE = 'https://pokeapi.co/api/v2'
 const LIMIT = 20
@@ -31,21 +32,25 @@ export async function getFirst20Pokemon(): Promise<PokemonItemDTO[]> {
 
                 return {
                     id: pokemonItemData.id,
-                    name: pokemonItemData.name ?? '',
-                    image: pokemonItemData.sprites.other?.home?.front_default ?? '', // TODO refactor
-                    types: pokemonItemData.types?.map((t) => t?.type?.name) ?? [],
-                    heightM: pokemonItemData.height, // TODO convert the value to meter
-                    weightKg: pokemonItemData.weight, // TODO convert the value to weight
+                    name: capitalize(pokemonItemData.name),
+                    image: pickPokemonImage(pokemonItemData),
+                    types: pokemonItemData.types?.map((t) => capitalize(t?.type?.name)) ?? [],
+                    heightM: toMeters(pokemonItemData.height),
+                    weightKg: toKg(pokemonItemData.weight),
                 }
-            } catch {
-                //  failure: skip this one
-                    // TODO error log
+            } catch(err : unknown) {
+                // graceful partial failure: skip this one
+                const message = err instanceof Error ? err.message : String(err);
+                console.error(
+                    `[getFirst20Pokemon] Failed to fetch details: ${message}`,
+                    err
+                );
                 return null
             }
         })
     )
 
-    // TODO sort by ID
+    // sort by id in case items are not already sorted in the api response
     return pokemonItemDTOList
         .filter((x: PokemonItemDTO | null): x is PokemonItemDTO => !!x)
 }

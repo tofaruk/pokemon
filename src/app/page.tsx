@@ -1,6 +1,6 @@
-import {PokemonItemDTO} from "@/app/lib/types";
-import {getFirst20Pokemon} from "@/app/service/pokemonApi";
-import PokemonCard from "@/app/components/PokemonCard";
+import {PokemonItemDTO} from "@/lib/types";
+import {getFirst20Pokemon} from "@/service/pokemonApi";
+import PokemonCard from "@/components/PokemonCard";
 
 export default async function Home() {
     const pokemonList: PokemonItemDTO[] = await getFirst20Pokemon();
