@@ -7,8 +7,8 @@ export default async function Home() {
     return (
         <main className="mx-auto max-w-7xl px-4 py-8">
             <h1 className="mb-6 text-2xl font-bold">Pokémon List</h1>
-            <section>
-                {pokemonList.map((p)=>(
+            <section className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {pokemonList.map((p:PokemonItemDTO)=>(
                     <PokemonCard key={p.id} pokemon={p}/>
                 ))}
             </section>
