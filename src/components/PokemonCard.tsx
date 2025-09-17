@@ -12,6 +12,7 @@ export default function PokemonCard({pokemon}: PokemonCardProps) {
                     src={pokemon.image}
                     alt={pokemon.name}
                     fill={true}
+                    sizes="(min-width: 1280px) 294px, (min-width: 1024px) 33vw, (min-width: 640px) 46vw, 94vw"
                 />
                 {pokemon.types.length > 0 && (
                     <span className="absolute left-2 top-2 rounded-full bg-black/80 px-2 py-1 text-xs font-medium text-white">
