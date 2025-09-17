@@ -25,7 +25,7 @@ export async function getFirst20Pokemon(): Promise<PokemonItemDTO[]> {
     )
 
     const pokemonItemDTOList: (PokemonItemDTO | null)[] = await Promise.all(
-        list.results.map(async (item: PokemonListItem, index: number): Promise<PokemonItemDTO | null> => {
+        list.results.map(async (item: PokemonListItem): Promise<PokemonItemDTO | null> => {
             try {
                 const pokemonItemData: PokemonItem = await fetchJson<PokemonItem>(item.url)
 
