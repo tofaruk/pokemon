@@ -53,4 +53,5 @@ export async function getFirst20Pokemon(): Promise<PokemonItemDTO[]> {
     // sort by id in case items are not already sorted in the api response
     return pokemonItemDTOList
         .filter((x: PokemonItemDTO | null): x is PokemonItemDTO => !!x)
+        .sort((a:PokemonItemDTO, b:PokemonItemDTO) => a.id - b.id)
 }

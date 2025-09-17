@@ -1,6 +1,5 @@
 import {PokemonItemDTO} from "@/lib/types";
 import Image from "next/image";
-import {capitalize} from "@/lib/helper";
 
 type PokemonCardProps = {
     pokemon: PokemonItemDTO;
